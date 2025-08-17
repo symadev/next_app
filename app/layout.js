@@ -17,11 +17,17 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // whatever you go any page , the pages will be wrapped/ fired in this layout first 
+  //and the in this layout it pass the pages content as children form here 
+  // you can also use this layout to add global styles or components
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <nav className="p-4 bg-orange-800 text-white font-medium">
+          Home| About | Contact
+        </nav>
         {children}
       </body>
     </html>
