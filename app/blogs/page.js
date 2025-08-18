@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 const blogs=[
@@ -25,7 +26,7 @@ export default function BlogsLayout({ children }) {
       <h2 className="text-2xl font-bold mb-4">Blogs</h2>
     <ul>
    {blogs.map((blog) => (
-    <li  className="p-4 " key={blog.id}>{blog.title}</li>
+    <li  className="p-4  " key={blog.id}><Link href={`/blogs/${blog.id}`}>{blog.title}</Link></li>
    ))}
     </ul>
     </main>

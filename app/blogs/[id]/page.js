@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import React from 'react'
 
 export default async function BlogPage({params}) {
@@ -12,6 +13,12 @@ export default async function BlogPage({params}) {
 
 
 const { id } =  await params;
+
+// agulo jehetu perameter theke ashce sources, this is string
+
+if (id === "3"){
+  notFound();
+}
   return (
     <div>My Blogs id  is  :{id} </div>
   )
