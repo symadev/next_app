@@ -13,6 +13,7 @@ export default function AboutLayout({ children }) {
                 <Link href="/about/vission">Vission</Link>
             </li>
          </ul>
+         
         </nav>
         {children}
     </div>
