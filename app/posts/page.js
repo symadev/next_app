@@ -18,11 +18,11 @@ export default async function Postpage() {
     const posts = await getAllPosts();
     console.log(posts);
   return (
-    <div>
+    <div className="p-4">
     <div>All My Post Here</div>
     <ul>
         {
-            posts.map((post)=><li key ={post.id}><Link href ={`/posts/${post.id}`}>{post.title}</Link></li>)
+            posts.map((post)=><li  key ={post.id}><Link href ={`/posts/${post.id}`}>{post.title}</Link></li>)
         }
         </ul>
         </div>

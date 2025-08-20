@@ -13,7 +13,7 @@ export default function AboutLayout({ children }) {
   return (
     <div>
 
-        <nav className="p-4 bg-orange-500 text-white font-medium">
+        <nav className="p-4  text-white font-medium">
          <ul>
             <li className="flex gap-4">
                 <Link href="/about/mission">Mission</Link>
@@ -22,6 +22,7 @@ export default function AboutLayout({ children }) {
          </ul>
          
         </nav>
+          <hr></hr>
         {children}
     </div>
   )
