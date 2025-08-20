@@ -1,7 +1,8 @@
 
+import Comments from '@/app/component/comments';
 import getPostComments from '@/app/lib/getPostComments';
 import getPosts from '@/app/lib/getPosts';
-import React from 'react'
+import React, { Suspense } from 'react'
 
 
 //making the dynamic metadata
@@ -28,7 +29,10 @@ export default async function PostpageContent({params}) {
         const postsPromise = await getPosts(id);
         const commentsPromise = await getPostComments(id);
 
-        const [posts, comments] = await Promise.all([postsPromise, commentsPromise]);
+
+        const posts = await postsPromise;
+
+        // const [posts, comments] = await Promise.all([postsPromise, commentsPromise]);
 
         // Promise.all([ ... ]) মানে হলো, একসাথে দুইটা (বা একাধিক) promise চালাও এবং সবগুলো শেষ হওয়া পর্যন্ত wait করো।
 
@@ -38,18 +42,16 @@ export default async function PostpageContent({params}) {
         // the waterfall method follow the sequence of the promises, means one after another
   return (
     <div>
-        <h1 className=' text-blue-400'>{posts.title}</h1>
+        <h1 className=' text-blue-400 font-extrabold'>{posts.title}</h1>
         <h3 className='mt-4' >{posts.body}</h3>
-         <h1 className=' text-blue-400'>Comments</h1>
-         <ul>
-            {
-                comments.map((comment)=><li key={comment.id} className='border-b p-2'>
-                    <h3 className='text-blue-400'>{comment.name}</h3>
-                    <p>{comment.body}</p>
-                    <p className='text-gray-500'>By: {comment.email}</p>
-                </li>)
-            }
-            </ul>
+        <hr></hr>
+
+      <Suspense fallback={<h1>Loading comments...</h1>}>
+  <Comments promise={commentsPromise} />
+</Suspense>
+
+
+       
 
         
     </div>
